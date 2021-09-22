@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
-  reactStrictMode: true,
+
+module.exports = (phase, {defaultConfig}) => {
+  if ('sassOptions' in defaultConfig) {
+      defaultConfig['sassOptions'] = {
+          prependData: `@import "~@styles/base.scss";`,
+      }
+  }
+  defaultConfig.reactStrictMode = true
+  return defaultConfig;
 }
