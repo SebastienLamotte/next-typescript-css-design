@@ -3,7 +3,7 @@
 module.exports = (phase, {defaultConfig}) => {
   if ('sassOptions' in defaultConfig) {
       defaultConfig['sassOptions'] = {
-          prependData: `@import "~@styles/base.scss";`,
+          prependData: `@import "~@styles/main.scss";`,
       }
   }
   defaultConfig.reactStrictMode = true

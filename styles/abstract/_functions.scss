@@ -1,0 +1,6 @@
+@function grid-element-width($nbCol, $nbTotalCol) {
+  @return calc(
+    #{$nbCol} * (100% - ((#{$nbTotalCol} - 1) * #{$gutter-horizontal})) / #{$nbTotalCol} +
+      (#{$nbCol} - 1) * #{$gutter-horizontal}
+  );
+}
