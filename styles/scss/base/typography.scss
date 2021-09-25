@@ -2,7 +2,7 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  color: $color-grey-dark;
+  color: $color-grey-dark-1;
 }
 
 .heading-primary {
@@ -33,7 +33,7 @@ body {
   font-size: 3.5rem;
   text-transform: uppercase;
   font-weight: 700;
-  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  @include default-linear-gradient('primary', '', '', 'to right');
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

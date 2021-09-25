@@ -1,0 +1,138 @@
+.card {
+  -moz-perspective: 150rem;
+  perspective: 150rem;
+  position: relative;
+  height: 52rem;
+
+  &:hover .front {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover .back {
+    transform: rotateY(0);
+  }
+}
+
+.side {
+  height: 52rem;
+  transition: all 0.8s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backface-visibility: hidden;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+}
+
+.front {
+  background-color: $color-white;
+
+  .picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    &.pic-see {
+      @include default-linear-gradient('secondary', '/nat-5.jpg');
+    }
+
+    &.pic-forest {
+      @include default-linear-gradient('primary', '/nat-6.jpg');
+    }
+
+    &.pic-snow {
+      @include default-linear-gradient('tertiary', '/nat-7.jpg');
+    }
+  }
+
+  .heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: $color-white;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%;
+
+    .span {
+      padding: 1rem 1.5rem;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+
+      &.span-see {
+        @include default-linear-gradient('secondary', '', 0.85);
+      }
+
+      &.span-forest {
+        @include default-linear-gradient('primary', '', 0.85);
+      }
+
+      &.span-snow {
+        @include default-linear-gradient('tertiary', '', 0.85);
+      }
+    }
+  }
+
+  .details {
+    padding: 3rem;
+
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
+  }
+}
+
+.back {
+  transform: rotateY(180deg);
+
+  &.see {
+    @include default-linear-gradient('secondary');
+  }
+
+  &.forest {
+    @include default-linear-gradient('primary');
+  }
+
+  &.snow {
+    @include default-linear-gradient('tertiary');
+  }
+
+  .cta {
+    @include center-horizontal-vertical;
+    width: 90%;
+    text-align: center;
+
+    .price-box {
+      margin-bottom: 8rem;
+      color: $color-white;
+
+      .price-box {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+      }
+
+      .price-value {
+        font-size: 6rem;
+        font-weight: 100;
+      }
+    }
+  }
+}

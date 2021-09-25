@@ -1,32 +1,38 @@
-import React from 'react';
-
 import styles from './button.module.scss';
 
 type Props = {
   mode?: 'default' | 'text';
   animated?: boolean;
-  white?: boolean;
+  color?: string;
+  anchor?: boolean;
   children: React.ReactNode;
 };
 
 const Button: React.FC<Props> = ({
   mode = 'default',
   animated = false,
-  white = false,
+  color,
+  anchor = false,
   children,
 }) => {
   let stylesArray: string[];
   if (mode === 'text') stylesArray = [styles['btn-text']];
   else {
     stylesArray = [styles.btn];
-    if (white) stylesArray.push(styles['btn--white']);
-    if (animated) stylesArray.push(styles['btn--animated']);
+    if (color === 'white') stylesArray.push(styles['white']);
+    else if (color === 'green') stylesArray.push(styles['green']);
+
+    if (animated) stylesArray.push(styles['animated']);
   }
 
-  return (
+  return anchor ? (
     <a href="#" className={stylesArray.join(' ')}>
-      {children}
+      {children}{' '}
     </a>
+  ) : (
+    <button className={stylesArray.join(' ')}>
+      {children}
+    </button>
   );
 };
 

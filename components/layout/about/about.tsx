@@ -1,11 +1,16 @@
 import Button from 'components/ui/button/button';
+import Composition from 'components/composition/composition';
 import styles from './about.module.scss';
-import React from 'react';
-import Composition from 'components/layout/about/composition/composition';
+
+const photos: [string, string, string] = [
+  '/nat-1-large.jpg',
+  '/nat-2-large.jpg',
+  '/nat-3-large.jpg',
+];
 
 const About: React.FC<{}> = () => {
   return (
-    <section className={styles['about']}>
+    <section className={styles.about}>
       <div className="u-center-text u-margin-bottom-big">
         <h2 className="heading-secondary">
           Exciting tours for adventurous people
@@ -29,12 +34,12 @@ const About: React.FC<{}> = () => {
           <p className="paragraph">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
             laboriosam nihil cumque eaque veniam eveniet facere, ullam
-            inventore.
+            inventore, libero aliquam necessitatibus ab dicta assumenda?
           </p>
 
-          <Button mode="text">Learn more &rarr;</Button>
+          <Button anchor={true} mode="text">Learn more &rarr;</Button>
         </div>
-        <Composition />
+        <Composition pictures={photos} />
       </div>
     </section>
   );

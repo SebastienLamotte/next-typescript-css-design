@@ -1,0 +1,47 @@
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin default-linear-gradient(
+  $color-category,
+  $imageUrl: '',
+  $opacity: '',
+  $direction: 'to right bottom'
+) {
+  $light: '';
+  $dark: '';
+
+  @if $color-category == 'primary' {
+    $light: $color-primary-light;
+    $dark: $color-primary-dark;
+  } @else if $color-category == 'secondary' {
+    $light: $color-secondary-light;
+    $dark: $color-secondary-dark;
+  } @else if $color-category == 'tertiary' {
+    $light: $color-tertiary-light;
+    $dark: $color-tertiary-dark;
+  }
+
+  @if $opacity != '' {
+    $light: rgba($light, $opacity);
+    $dark: rgba($dark, $opacity);
+  }
+
+  @if $imageUrl == '' {
+    background-image: linear-gradient(to right bottom, $light, $dark);
+  } @else {
+    background-image: linear-gradient(to right bottom, $light, $dark),
+      url($imageUrl);
+  }
+}
+
+@mixin center-horizontal-vertical {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
