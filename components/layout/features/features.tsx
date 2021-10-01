@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Box from '../../box/box';
 import styles from './features.module.scss';
 
@@ -11,6 +12,16 @@ const paragraphs = {
 const Features: React.FC<{}> = () => {
   return (
     <section className={styles.features}>
+      <div className={styles['bgImage-container']}>
+        <div className={styles.bgImage}>
+          <Image
+            src="/nat-4.jpg"
+            quality={1}
+            alt="relaxing landscape"
+            layout="fill"
+          />
+        </div>
+      </div>
       <div className="row">
         <div className="col-1-of-4">
           <Box

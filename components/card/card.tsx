@@ -6,9 +6,16 @@ type Props = {
   title: string;
   details: string[];
   price: number;
+  showPopup: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Card: React.FC<Props> = ({ title, cardName, details, price }) => {
+const Card: React.FC<Props> = ({
+  title,
+  cardName,
+  details,
+  price,
+  showPopup,
+}) => {
   return (
     <div className={styles.card}>
       <div className={[styles.side, styles.front].join(' ')}>
@@ -34,7 +41,9 @@ const Card: React.FC<Props> = ({ title, cardName, details, price }) => {
             <p className={styles['price-only']}>Only</p>
             <p className={styles['price-value']}>${price}</p>
           </div>
-          <Button color="white">Book now!</Button>
+          <Button onClick={() => showPopup(true)} color="white">
+            Book now!
+          </Button>
         </div>
       </div>
     </div>

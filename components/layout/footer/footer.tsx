@@ -1,49 +1,50 @@
 import Image from 'next/image';
 import styles from './footer.module.scss';
 
+const footerNavBar = [
+  'Company',
+  'Contact us',
+  'Careers',
+  'Privacy policy',
+  'Terms',
+];
+
 const Footer: React.FC<{}> = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles['logo-box']}>
-        <div className={styles.logo}>
+        <div className={[styles.logo, styles.desktop].join(' ')}>
           <Image
             src="/logo-green-2x.png"
             alt="Full logo"
-            width={150}
-            height={119}
+            quality={1}
+            width={300}
+            height={238}
+            layout="responsive"
           />
         </div>
-        {/* <img src="logo-green-2x.png" alt="Full logo" className={styles.logo} /> */}
+        <div className={[styles.logo, styles.phone].join(' ')}>
+          <Image
+            src="/logo-green-small-1x.png"
+            alt="Full logo"
+            quality={1}
+            width={150}
+            height={30}
+            layout="responsive"
+          />
+        </div>
       </div>
       <div className="row">
         <div className="col-1-of-2">
           <div className={styles.navigation}>
             <ul className={styles.list}>
-              <li className={styles.item}>
-                <a href="#" className={styles.link}>
-                  Company
-                </a>
-              </li>
-              <li className={styles.item}>
-                <a href="#" className={styles.link}>
-                  Contact us
-                </a>
-              </li>
-              <li className={styles.item}>
-                <a href="#" className={styles.link}>
-                  Careers
-                </a>
-              </li>
-              <li className={styles.item}>
-                <a href="#" className={styles.link}>
-                  Privacy policy
-                </a>
-              </li>
-              <li className={styles.item}>
-                <a href="#" className={styles.link}>
-                  Terms
-                </a>
-              </li>
+              {footerNavBar.map((item) => (
+                <li key={item} className={styles.item}>
+                  <a href="#" className={styles.link}>
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

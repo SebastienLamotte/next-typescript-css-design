@@ -31,7 +31,7 @@ const Stories: React.FC<{}> = () => {
         />
       </div>
       <div className="u-center-text u-margin-top-big">
-        <Button anchor={true} mode="text">Read all stories &rarr;</Button>
+        <Button href='#' mode="text">Read all stories &rarr;</Button>
       </div>
     </section>
   );

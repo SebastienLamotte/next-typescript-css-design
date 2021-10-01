@@ -1,6 +1,11 @@
 .group {
   width: 49%;
   display: inline-block;
+
+  @include respond(tab-port) {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
 }
 
 .input {
@@ -32,7 +37,7 @@
       display: block;
       content: '';
       border-radius: 50%;
-      @include center-horizontal-vertical;
+      @include abs-center;
       background-color: $color-primary;
       opacity: 0;
       transition: opacity 0.2s;

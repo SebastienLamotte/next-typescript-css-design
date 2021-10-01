@@ -6,10 +6,21 @@
 
   &:hover .front {
     transform: rotateY(-180deg);
+
+    @include respond(tab-port, none) {
+      transform: rotateY(0);
+    }
   }
 
   &:hover .back {
     transform: rotateY(0);
+  }
+
+  @include respond(tab-port, none) {
+    height: auto;
+    border-radius: 3px;
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
   }
 }
 
@@ -24,6 +35,12 @@
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+  @include respond(tab-port, none) {
+    height: auto;
+    position: relative;
+    box-shadow: none;
+  }
 }
 
 .front {
@@ -82,6 +99,10 @@
   .details {
     padding: 3rem;
 
+    @include respond(tab-port, none) {
+      padding: 1rem 3rem;
+    }
+
     ul {
       list-style: none;
       width: 80%;
@@ -103,6 +124,11 @@
 .back {
   transform: rotateY(180deg);
 
+  @include respond(tab-port, none) {
+    transform: rotateY(0);
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+  }
+
   &.see {
     @include default-linear-gradient('secondary');
   }
@@ -116,15 +142,28 @@
   }
 
   .cta {
-    @include center-horizontal-vertical;
+    @include abs-center;
     width: 90%;
     text-align: center;
+
+    @include respond(tab-port, none) {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
 
     .price-box {
       margin-bottom: 8rem;
       color: $color-white;
 
-      .price-box {
+      @include respond(tab-port, none) {
+        margin-bottom: 3rem;
+      }
+
+      .price-only {
         font-size: 1.4rem;
         text-transform: uppercase;
       }
@@ -132,6 +171,10 @@
       .price-value {
         font-size: 6rem;
         font-weight: 100;
+
+        @include respond(tab-port, none) {
+          font-size: 4rem;
+        }
       }
     }
   }

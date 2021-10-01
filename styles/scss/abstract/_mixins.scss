@@ -1,3 +1,47 @@
+// MEDIA QUERY MANAGER
+/*
+  size              media           $breakpoint       since 16px=1em
+0 - 600px:      phone                 phone               37.5em
+600 - 900px:    Tablet portrait       tab-port            56.25em
+900 - 1200px:   Tablet landscape      tab-land            75em
+1200 - 1800px   Normal styles            /                  /
+1800px + :      Big desktop           big-desktop         112.5em
+*/
+
+@mixin respond($breakpoint, $hover: '') {
+  @if $breakpoint == big-desktop {
+    @if $hover == '' {
+      @media only screen and (min-width: 112.5em) {
+        @content;
+      }
+    } @else {
+      @media only screen and (min-width: 112.5em),
+        only screen and (hover: $hover) {
+        @content;
+      }
+    }
+  } @else {
+    $max-width: '';
+    @if $breakpoint == phone {
+      $max-width: 37.5em;
+    } @else if $breakpoint == tab-port {
+      $max-width: 56.25em;
+    } @else if $breakpoint == tab-land {
+      $max-width: 75em;
+    }
+    @if $hover == '' {
+      @media only screen and (max-width: $max-width) {
+        @content;
+      }
+    } @else {
+      @media only screen and (max-width: $max-width),
+        only screen and (hover: $hover) {
+        @content;
+      }
+    }
+  }
+}
+
 @mixin clearfix {
   &::after {
     content: '';
@@ -39,7 +83,7 @@
   }
 }
 
-@mixin center-horizontal-vertical {
+@mixin abs-center {
   position: absolute;
   top: 50%;
   left: 50%;

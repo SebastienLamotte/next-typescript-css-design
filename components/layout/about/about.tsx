@@ -37,7 +37,7 @@ const About: React.FC<{}> = () => {
             inventore, libero aliquam necessitatibus ab dicta assumenda?
           </p>
 
-          <Button anchor={true} mode="text">Learn more &rarr;</Button>
+          <Button href='#' mode="text">Learn more &rarr;</Button>
         </div>
         <Composition pictures={photos} />
       </div>

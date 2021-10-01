@@ -1,11 +1,22 @@
+.background-image {
+  position: relative;
+  height: 95vh;
+  opacity: 0.2;
+}
+
 .header {
   height: 95vh;
-  @include default-linear-gradient('primary', '/hero.jpg', 0.8);
+  @include default-linear-gradient('primary');
   background-size: cover;
   background-position: top;
   position: relative;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  @include respond(phone) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
 
   .logo-box {
     position: absolute;

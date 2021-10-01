@@ -14,7 +14,15 @@ const Composition: React.FC<Props> = ({ pictures }) => {
             key={`photo${id}`}
             className={[styles.photo, styles[`photo-${id + 1}`]].join(' ')}
           >
-            <Image src={picture} alt={`Photo ${id}`} width="300" height="203" />
+            <Image
+              src={picture}
+              alt={`Photo ${id}`}
+              quality={25}
+              width={1000}
+              height={667}
+              layout="responsive"
+              objectFit="cover"
+            />
           </div>
         ))}
       </div>

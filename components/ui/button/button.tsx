@@ -1,10 +1,12 @@
+import { MouseEventHandler } from 'react';
 import styles from './button.module.scss';
 
 type Props = {
   mode?: 'default' | 'text';
   animated?: boolean;
   color?: string;
-  anchor?: boolean;
+  href?: string;
+  onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
   children: React.ReactNode;
 };
 
@@ -12,7 +14,8 @@ const Button: React.FC<Props> = ({
   mode = 'default',
   animated = false,
   color,
-  anchor = false,
+  href,
+  onClick = () => {},
   children,
 }) => {
   let stylesArray: string[];
@@ -25,12 +28,12 @@ const Button: React.FC<Props> = ({
     if (animated) stylesArray.push(styles['animated']);
   }
 
-  return anchor ? (
-    <a href="#" className={stylesArray.join(' ')}>
+  return href ? (
+    <a href={href} onClick={onClick} className={stylesArray.join(' ')}>
       {children}{' '}
     </a>
   ) : (
-    <button className={stylesArray.join(' ')}>
+    <button onClick={onClick} className={stylesArray.join(' ')}>
       {children}
     </button>
   );
